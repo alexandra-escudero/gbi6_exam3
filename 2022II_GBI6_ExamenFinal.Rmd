@@ -198,7 +198,7 @@ p5 <- ggcorrplot(penguins_corr, type = "upper", hc.order = TRUE,lab = TRUE, lab_
 p5
 ```
 
-**INTERPRETACIÓN**
+**INTERPRETACIÓN:** Se muestran salidas del color,
 
 # [4.0 PUNTOS] 2. MAPAS DE CALOR DE EXPRESIÓN GÉNICA
 
@@ -255,11 +255,11 @@ Heatmap(expr_dist,  col=viridis(10),
 
 Realice una descripción de lo que observa en el mapa de calor considerando:
 
--   las intensidades de color de las distancias,
+-   las intensidades de color de las distancias, se deriva con mayor intensidad mientras va creciendo la gráfica
 
--   el tiempo de exposición al tratamiento
+-   el tiempo de exposición al tratamiento, es menor de acuerdo a la distancia
 
--   el tipo de suero
+    -   el tipo de suero has má tipo de sueros HIHS que HS
 
 **INTERPRETACIÓN:**
 
