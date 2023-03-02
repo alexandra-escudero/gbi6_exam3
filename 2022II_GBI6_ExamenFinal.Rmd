@@ -1,7 +1,7 @@
 ---
 title: "Bioinformática- GBI6"
 subtitle: "EXAMEN FINAL - 2022II"
-author: "APELLIDO, Nombre"
+author: "Escudero Kimberly"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -18,7 +18,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ```{r echo = FALSE, results = 'asis'}
 image = "https://www.ikiam.edu.ec/wp-content/uploads/2021/12/logo-ikiam-1.png"
 cat(paste0('<center><img src="', image,  '"></center>')) 
@@ -26,25 +25,25 @@ cat(paste0('<center><img src="', image,  '"></center>'))
 
 ## INDICACIONES
 
-- Coloque su apellido y nombre en el campo `author`.
+-   Coloque su apellido y nombre en el campo `author`.
 
-- Clone el repositorio de GitHub
+-   Clone el repositorio de GitHub
 
-- Cree un `Project` y enlace al repositorio clonado. 
+-   Cree un `Project` y enlace al repositorio clonado.
 
-- Resuelva lo solicitado. 
+-   Resuelva lo solicitado.
 
-- Genere un reporte en formato `.html` o `.pdf`
+-   Genere un reporte en formato `.html` o `.pdf`
 
 ## Librerías requeridas
 
-- Asegúrese de que todas las librerías se cargan adecuadamente. Si es necesario instale las librerías utilizando el comando: 
+-   Asegúrese de que todas las librerías se cargan adecuadamente. Si es necesario instale las librerías utilizando el comando:
 
 ```{r, eval=FALSE}
-install.packages("packagename")
+ainstall.packages("packagename")
 ```
 
-- En el caso de las librerías de Bioconductor requiere instalarlo usando la instrucción. 
+-   En el caso de las librerías de Bioconductor requiere instalarlo usando la instrucción.
 
 ```{r, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
@@ -52,19 +51,19 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install(version = "3.16")
 ```
 
-  - Luego debe instalar la paquetería de bioconductor, con la instrucción: 
+-   Luego debe instalar la paquetería de bioconductor, con la instrucción:
 
 ```{r, eval=FALSE}
 BiocManager::install("packagename")
 ```
 
-- Si la librería está en desarrollo, debe tener la librería `devtools` y luego ejecutar: 
+-   Si la librería está en desarrollo, debe tener la librería `devtools` y luego ejecutar:
 
 ```{r, eval=FALSE}
 devtools::install_github("kassambara/ggpubr")
 ```
 
-**Las librerías requeridas en esta evaluación son**: 
+**Las librerías requeridas en esta evaluación son**:
 
 ```{r, warning=FALSE}
 
@@ -72,7 +71,6 @@ library(ggpmisc); library(ggplot2); library(plotly); library(palmerpenguins)
 library(ggplot2); library(magrittr); library(ggpubr); library(tidyverse)
 library(ComplexHeatmap); library(viridis)
 ```
-
 
 # [4.0 PUNTOS] 1. Pingüinos de Palmer
 
@@ -82,32 +80,32 @@ La base de datos de esta pregunta contiene distintas mediciones para tres especi
 img1 = "https://bookdown.org/rodolfo_carvajal/apunte/figs/penguins.png"
 cat(paste0('<center><img src="', img1,'"></center>')) 
 ```
+
 ```{r echo = FALSE, results = 'asis'}
 img2 = "https://bookdown.org/rodolfo_carvajal/apunte/figs/culmen_depth.png"
 cat(paste0('<center><img src="', img2,'"></center>')) 
 ```
 
-Puede revisar los datos de los pingüinos utilizando la instrucción `str()` o `skim()`. 
+Puede revisar los datos de los pingüinos utilizando la instrucción `str()` o `skim()`.
 
 ```{r}
 skimr::skim(penguins)
 ```
 
-A continuación se muestra un ejemplo de análisis de la data de los pingüinos de Palmer: 
+A continuación se muestra un ejemplo de análisis de la data de los pingüinos de Palmer:
 
-- En la figura `p1` se tiene un errorplot donde el largo del pico es evaluado por cada especie e internamente por sexo del ave. 
+-   En la figura `p1` se tiene un errorplot donde el largo del pico es evaluado por cada especie e internamente por sexo del ave.
 
-- En la figura `p2` se tiene un boxplot donde se compara el ancho del pico por cada especie. 
+-   En la figura `p2` se tiene un boxplot donde se compara el ancho del pico por cada especie.
 
-- En la figura `p3` se tiene una regresión lineal donde se mide el efecto de la longitud del pico sobre el ancho y se desagrega por especie(fila) e isla (columnas). 
+-   En la figura `p3` se tiene una regresión lineal donde se mide el efecto de la longitud del pico sobre el ancho y se desagrega por especie(fila) e isla (columnas).
 
-- Finalmente la figura compuesta con las tres figuras anteriores en una estrucutura: 
+-   Finalmente la figura compuesta con las tres figuras anteriores en una estrucutura:
 
 ```{r echo = FALSE, results = 'asis'}
 img3 = "result/ejemplo1.png"
 cat(paste0('<center><img src="', img3,'" width="200" height="200" alt=""></center>')) 
 ```
-
 
 ```{r pressure, echo=FALSE, warning=FALSE, fig.height=8}
 ## Read dataset Palmer Penguins
@@ -146,34 +144,61 @@ ggarrange(p3, ggarrange(p1, p2, labels =c("b", "c"), nrow=2),
 
 ### [1.0 punto] 1.1. Interprete lo que se muestra en la figura anterior
 
-**INTERPRETACIÓN**
+En el primer gráfico (p1), la variable "color" está establecida como "sex", que diferencia por color según el sexo del pingüino en rosado, verde y azul. Es decir, los puntos de color diferentes representan diferentes sexos de pingüinos. En el segundo gráfico (p2), la variable "color" está establecida como "species", lo que significa que el ancho del pico se diferencia por color según la especie de pingüino. Es decir, los puntos de color diferentes representan diferentes especies de pingüinos. En el tercer gráfico (p3), la variable "color" está establecida como "factor(species)", lo que significa que cada especie de pingüino se representa con un color diferente en el gráfico de dispersión.
 
-### [3.0 puntos] 1.2. Genere dos gráficas `p4` y `p5`donde: 
+### [3.0 puntos] 1.2. Genere dos gráficas `p4` y `p5`donde:
 
-- `p4` es una regresión de `x: body_mass_g` y `y: flipper_length_mm`, que tiene inserto la ecuación de la regresión y el $R^2$. Asimismo tiene una coloración por sexo, y una separación por sexo e isla. 
+-   `p4` es una regresión de `x: body_mass_g` y `y: flipper_length_mm`, que tiene inserto la ecuación de la regresión y el $R^2$. Asimismo tiene una coloración por sexo, y una separación por sexo e isla.
 
-- `p5` tiene un correlation plot de las variables numéricas de longitud de pico, ancho de pico, longitud de aleta y masa corporal. La figura tiene  que tener la apariencia de la imagen de abajo, este se encuentra resuelto en la  página de [ggcorrplot](http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2). 
+-   `p5` tiene un correlation plot de las variables numéricas de longitud de pico, ancho de pico, longitud de aleta y masa corporal. La figura tiene que tener la apariencia de la imagen de abajo, este se encuentra resuelto en la página de [ggcorrplot](http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2).
 
-```{r echo = FALSE, results = 'asis'}
-img4 = "http://www.sthda.com/sthda/RDoc/figure/ggplot2/ggcorrplot-demo-ggcorrplot-7.png"
-cat(paste0('<center><img src="', img4,'" width="400" height="400" alt=""></center>')) 
-```
+    ```{r}
 
-- Realice una composición de figuras que se indica en la figura de abajo e interprete.
+    ```
 
 ```{r echo = FALSE, results = 'asis'}
-img4 = "result/ejercicio1.png"
-cat(paste0('<center><img src="', img4,'" width="200" height="200" alt=""></center>')) 
+library(ggplot2)
+
+p4 <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = sex)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, na.rm = TRUE) +
+  scale_color_manual(values = c("#2596be", "#873e23")) +
+  facet_grid(rows = vars(sex), cols = vars(island)) +
+  labs(title = "Relación entre masa corporal y longitud de aleta de pingüinos",
+       x = "Masa corporal (g)", y = "Longitud de aleta (mm)",
+       color = "Sexo") +
+  theme_bw() +
+  theme(text = element_text(size = 12), legend.position = "bottom") +
+  stat_poly_eq(formula = y ~ x, aes(label = paste(stat(eq.label), stat(adj.rr.label), sep = "*\", \"*")),
+               label.x = "right", label.y = "top",size=3)
+p4
 ```
 
+-   Realice una composición de figuras que se indica en la figura de abajo e interprete.
+
+```{r echo = FALSE, results = 'asis'}
+library(ggcorrplot)
+
+p5 <- ggcorrplot(select(pinguinos, c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g")), 
+                 type = "upper", 
+                 method = "circle", 
+                 colors = c("pink", "green", "orange"), 
+                 ggtheme = ggplot2::theme_gray, 
+                 lab = TRUE)
+p5
+```
 
 ```{r p1.1, echo=TRUE, warning=FALSE, fig.height=8}
-# Escriba aquí su código
+penguins_clean <- na.omit(penguins)
+penguins_num <- penguins_clean[, c(3, 4, 5, 6)]
+penguins_corr <- cor(penguins_num)
 
+p5 <- ggcorrplot(penguins_corr, type = "upper", hc.order = TRUE,lab = TRUE, lab_size = 10,
+                 ggtheme = ggplot2::theme_gray, colors = c("green", "yellow","pink"))
+p5
 ```
 
 **INTERPRETACIÓN**
-
 
 # [4.0 PUNTOS] 2. MAPAS DE CALOR DE EXPRESIÓN GÉNICA
 
@@ -200,7 +225,7 @@ expr_dist <- expression %>% select(-Gene, -var) %>%
 dim(expr_dist)
 ```
 
-Se realiza un gráfico de mapa de calor preliminar que permite tener un primer vistazo del nivel de relación entre cada una de las muestras en base a la distancia euclideana. 
+Se realiza un gráfico de mapa de calor preliminar que permite tener un primer vistazo del nivel de relación entre cada una de las muestras en base a la distancia euclideana.
 
 ```{r}
 Heatmap(expr_dist)
@@ -228,19 +253,17 @@ Heatmap(expr_dist,  col=viridis(10),
 
 ## [1.0 punto] 2.1. Interpretación del Mapa de calor
 
-Realice una descripción de lo que observa en el mapa de calor considerando: 
+Realice una descripción de lo que observa en el mapa de calor considerando:
 
-- las intensidades de color de las distancias, 
+-   las intensidades de color de las distancias,
 
-- el tiempo de exposición al tratamiento
+-   el tiempo de exposición al tratamiento
 
-- el tipo de suero
+-   el tipo de suero
 
-**INTERPRETACIÓN:** 
+**INTERPRETACIÓN:**
 
-
-
-## [3.0 puntos] 2.2. Mapa de calor artritis reumatoide. 
+## [3.0 puntos] 2.2. Mapa de calor artritis reumatoide.
 
 Realice la réplica e interpretación de los niveles de expresión génica en muestras de personas que sufren de artritits reumatoide; que se muestra en la sección 5 de la página [A simple tutorial for a complex ComplexHeatmap](https://github.com/kevinblighe/E-MTAB-6141) y que se basa en el artículo [Volume 28, Issue 9, 27 August 2019, Pages 2455-2470.e5](https://www.sciencedirect.com/science/article/pii/S2211124719310071?via%3Dihub).
 
@@ -249,51 +272,50 @@ require(RColorBrewer); require(ComplexHeatmap); require(circlize);
 require(digest); require(cluster)
 ```
 
+Aquí se carga los datos `EMTAB6141.rdata` que se requiere para este ejercicio. Requieres usar:
 
-Aquí se carga los datos `EMTAB6141.rdata` que se requiere para este ejercicio. Requieres usar: 
+-   `'mat.tsv'`
 
-- `'mat.tsv'`
+-   `'metadata.tsv'`
 
-- `'metadata.tsv'`
-
-- `'sig_genes.list'`
+-   `'sig_genes.list'`
 
 ```{r}
 # Cargue aquí sus datos
 
 ```
 
-En la siguiente celda de código, realice la réplica del mapa de calor que se encuentra a la izquierda (`hmap1`) de esta figura: 
+En la siguiente celda de código, realice la réplica del mapa de calor que se encuentra a la izquierda (`hmap1`) de esta figura:
 
 ```{r echo = FALSE, results = 'asis'}
 img5 = "https://github.com/kevinblighe/E-MTAB-6141/raw/master/README_files/figure-gfm/clusterheatmap_fig2-1.png"
 cat(paste0('<center><img src="', img5,'" width="700" height="700" alt=""></center>')) 
 ```
+
 ```{r}
 # Escriba aquí sus códigos
 ```
 
 **INTERPRETACIÓN:**
 
-
 # [2 PUNTOS] REPOSITORIO GITHUB
 
-Su repositorio de GitHub debe tener al menos los sigueites elementos: 
+Su repositorio de GitHub debe tener al menos los sigueites elementos:
 
-- Haber sido ``clonado` del repositorio del profesor.
+-   Haber sido \``clonado` del repositorio del profesor.
 
-- Haber sido enlazado a un repositorio local (`Project`) generado en RStudio.
+-   Haber sido enlazado a un repositorio local (`Project`) generado en RStudio.
 
-- Tener el archivos .Rmd 
+-   Tener el archivos .Rmd
 
-- Tener el archivo .HTML del examen (**MANDATORIO PARA CALIFICAR**).
+-   Tener el archivo .HTML del examen (**MANDATORIO PARA CALIFICAR**).
 
-- Tener al menos 3 controles de la versión.
+-   Tener al menos 3 controles de la versión.
 
-- Tener un README.md con: 
+-   Tener un README.md con:
 
-  - información personal, 
-  
-  - información del equipo, 
-  
-  - los programas y paquetes utilizados, y sus respectivas versiones
+    -   información personal,
+
+    -   información del equipo,
+
+    -   los programas y paquetes utilizados, y sus respectivas versiones
