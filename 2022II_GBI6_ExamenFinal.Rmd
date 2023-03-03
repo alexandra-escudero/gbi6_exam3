@@ -163,7 +163,7 @@ library(ggplot2)
 p4 <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = sex)) +
   geom_point(alpha = 0.6) +
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE, na.rm = TRUE) +
-  scale_color_manual(values = c("#2596be", "#873e23")) +
+  scale_color_manual(values = c("blue", "brown")) +
   facet_grid(rows = vars(sex), cols = vars(island)) +
   labs(title = "Relación entre masa corporal y longitud de aleta de pingüinos",
        x = "Masa corporal (g)", y = "Longitud de aleta (mm)",
@@ -199,7 +199,7 @@ p5 <- ggcorrplot(penguins_corr, type = "upper", hc.order = TRUE,lab = TRUE, lab_
 p5
 ```
 
-**INTERPRETACIÓN:** Se muestran salidas del color,
+**INTERPRETACIÓN:** Se muestran salidas del color, picos usando parametros he identificadores, tomando en cuenta la relación entre masa corporal y las longitudes de los pinguinos de p4 y p5.
 
 # [4.0 PUNTOS] 2. MAPAS DE CALOR DE EXPRESIÓN GÉNICA
 
@@ -263,6 +263,8 @@ Realice una descripción de lo que observa en el mapa de calor considerando:
     -   el tipo de suero has má tipo de sueros HIHS que HS
 
 **INTERPRETACIÓN:**
+
+La grafica presenta magnitudes diferentes entre la distancia, tiempo y sueros dentro de las muestras de un tejido.
 
 ## [3.0 puntos] 2.2. Mapa de calor artritis reumatoide.
 
