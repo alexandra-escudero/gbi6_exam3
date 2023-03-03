@@ -20,3 +20,4 @@ paquetes:
 library(ggpmisc); library(ggplot2); library(plotly); library(palmerpenguins)
 library(ggplot2); library(magrittr); library(ggpubr); library(tidyverse)
 library(ComplexHeatmap); library(viridis); library(ggcorrplot)
+.
