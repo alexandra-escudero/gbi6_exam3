@@ -40,7 +40,7 @@ cat(paste0('<center><img src="', image,  '"></center>'))
 -   Asegúrese de que todas las librerías se cargan adecuadamente. Si es necesario instale las librerías utilizando el comando:
 
 ```{r, eval=FALSE}
-ainstall.packages("packagename")
+install.packages("packagename")
 ```
 
 -   En el caso de las librerías de Bioconductor requiere instalarlo usando la instrucción.
@@ -49,6 +49,7 @@ ainstall.packages("packagename")
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install(version = "3.16")
+
 ```
 
 -   Luego debe instalar la paquetería de bioconductor, con la instrucción:
